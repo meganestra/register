@@ -21,19 +21,16 @@
 #student name is stored
 #ask user for next student name
 
-register = []
-
 puts "Please confirm how many students are in the class: "
-
 number_of_students = gets.chomp.to_i
 
 count = 0
 limit = number_of_students
+missed_days_counter = 0
+register = {}
+
 
 while (count < number_of_students)
-
-  def 
-  
 
   puts "Please enter the student's first name: "
   first_name = gets.chomp
@@ -41,16 +38,27 @@ while (count < number_of_students)
   puts "Please enter the student's last name: "
   last_name = gets.chomp
 
-  full_name = "#{first_name} #{last_name}"
-  register << full_name
+  full_name = "#{first_name.capitalize} #{last_name.capitalize}"
+  register["#{full_name}"] = {}
+
+  puts "Is student here? Please type yes or no"
+  attendance = gets.chomp.downcase
+  register["#{full_name}"]["present"] = ["#{attendance}"]
+
+  if (attendance == "yes")
+    puts "Have they submitted their homework?"
+    homework_status = gets.chomp
+    register["#{full_name}"]["homework"] = ["#{homework_status}"]
+  else
+    missed_days_counter += 1
+    register["#{full_name}"]["missed_days"] = ["#{missed_days_counter}"]
+  end
 
   count += 1
 
+  puts register
+
 end
-
-puts register
-
-
 
 
 
