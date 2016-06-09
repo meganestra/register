@@ -54,15 +54,18 @@ while (count < number_of_students)
     if (homework_status == "yes")
       puts "Does their homework reference chickens? ('yes' or 'no'): "
       chickens_present = gets.chomp
+
       if (chickens_present == "yes")
         register["#{full_name}"]["chicken_love"] = ["#{chickens_present}"]
       else
         register["#{full_name}"]["loser_status"] = ["Is loser"]
       end
+
     else
       missed_homework += 1
       register["#{full_name}"]["missed_homework"] = ["#{missed_homework}"]
     end
+    
   else
     missed_days_counter += 1
     register["#{full_name}"]["missed_days"] = ["#{missed_days_counter}"]
